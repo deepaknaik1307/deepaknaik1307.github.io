@@ -7,9 +7,9 @@ app.controller('myCtrl', function($scope, $http) {
 			method: 'GET',
 			url: './fileList.json'
 		}).then(function(response) {
-			console('File List : ' + response);
+			console.log('File List : ' + response);
 		}).catch(function(err) {
-			console('Error : ' + err);
+			console.log('Error : ' + err);
       });
   };
   
