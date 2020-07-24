@@ -1,8 +1,19 @@
 var app = angular.module('ramoshiIT', []);
-app.controller('myCtrl', function($scope) {
+app.controller('myCtrl', function($scope, $http) {
   $scope.container = {docs:[]};
-  
+
   $scope.initDoc = function() {
+	  $http({
+			method: 'GET',
+			url: './fileList.json'
+		}).then(function(response) {
+			console('File List : ' + response);
+		}).catch(function(err) {
+			console('Error : ' + err);
+      });
+  };
+  
+  $scope.initDocDir = function() {
 	  var directory = './documents';
 		var xmlHttp = new XMLHttpRequest();
 		xmlHttp.open('GET', directory, false); // false for synchronous request
@@ -19,6 +30,4 @@ app.controller('myCtrl', function($scope) {
 		    }
 		}
   };
-  
-  
 });
